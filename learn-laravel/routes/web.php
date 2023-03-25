@@ -21,6 +21,12 @@ Route::get('/demo', function () {
     return view('demo');
 });
 
+Route::get('/temp/{name?}', function ($name=null) {
+    $test = "<h2>H2</h2>";
+    $data = compact('name', 'test');
+    return view('template')->with($data);
+});
+
 Route::get('/demo/{name}/{id?}', function($name, $id=null){
     $data = compact('name', 'id');
     return view('demo')->with($data);
