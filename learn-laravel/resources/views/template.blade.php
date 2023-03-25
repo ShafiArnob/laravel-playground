@@ -1,8 +1,11 @@
 <h1>Blade Template</h1>
 
-<h2>{{$name ?? "Guest"}}</h2>
-{!! $test !!}
+<!-- <h2>{{$name ?? "Guest"}}</h2> -->
+{{-- {!! $test !!} --}}
 
+@php
+  $name = "Arnob"
+@endphp
 
 <!-- conditional statements  -->
 @if($name=="")

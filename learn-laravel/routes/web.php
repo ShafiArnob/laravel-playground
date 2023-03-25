@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SingleActionController;
 
 /*
@@ -20,6 +21,9 @@ Route::get('/about', 'App\Http\Controllers\DemoController@about');
 
 //* Single Action Controller
 Route::get('/demo', SingleActionController::class);
+
+//* Resource Controller
+Route::resource('/temp', PhotoController::class);
 
 //! Route Systems
 // Route::get('/', function () {
