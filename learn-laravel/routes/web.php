@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DemoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,25 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [DemoController::class, 'index']);
+Route::get('/about', 'App\Http\Controllers\DemoController@about');
+//! Route Systems
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 
-Route::get('/demo', function () {
-    return view('demo');
-});
+// Route::get('/demo', function () {
+//     return view('demo');
+// });
 
-Route::get('/temp/{name?}', function ($name=null) {
-    $test = "<h2>H2</h2>";
-    $data = compact('name', 'test');
-    return view('template')->with($data);
-});
+// Route::get('/temp/{name?}', function ($name=null) {
+//     $test = "<h2>H2</h2>";
+//     $data = compact('name', 'test');
+//     return view('template')->with($data);
+// });
 
-Route::get('/demo/{name}/{id?}', function($name, $id=null){
-    $data = compact('name', 'id');
-    return view('demo')->with($data);
-});
+// Route::get('/demo/{name}/{id?}', function($name, $id=null){
+//     $data = compact('name', 'id');
+//     return view('demo')->with($data);
+// });
