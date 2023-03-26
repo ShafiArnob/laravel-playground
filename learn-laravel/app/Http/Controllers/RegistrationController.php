@@ -15,10 +15,12 @@ class RegistrationController extends Controller
             [
                 'name'=>'required',
                 'email'=>'required|email',
-                'password'=>"required",
-                'confirm_password'=> 'required'
+                'password'=>"required|confirmed",
+                'password_confirmation'=> 'required'
             ]
         );
+        // if the name in the form is different in password we can use in the confirm_pass same:<confirm password input>
+        
         echo "<pre>";
         print_r($request->all());
     }
