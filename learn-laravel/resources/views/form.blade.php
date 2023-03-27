@@ -10,46 +10,14 @@
     <form action="{{url('/')}}/register" method="POST">
       @csrf
       <h1 class="text-center">Registration</h1>
+      @php
+        $demo = 1;
+      @endphp
+      <x-input type="text" name="name" label="Name" :demo="$demo"/>
+      <x-input type="email" name="name" label="Email"/>
+      <x-input type="password" name="password" label="Password"/>
+      <x-input type="password" name="password_confirmation" label="Confirm Password"/>
 
-      <div class="form-group">
-        <label for="">Name</label>
-        <input name="name" type="text" class="form-control" value="{{old('name')}}">
-        <span class="text-danger">
-          @error('name')
-            {{$message}}
-          @enderror
-        </span>
-      </div>
-
-      <div class="form-group">
-        <label for="">Email</label>
-        <input name="email" type="email" class="form-control" value="{{old('email')}}">
-        <span class="text-danger">
-          @error('email')
-            {{$message}}
-          @enderror
-        </span>
-      </div>
-
-      <div class="form-group">
-        <label for="">Password</label>
-        <input name="password" type="password" class="form-control">
-        <span class="text-danger">
-          @error('password')
-            {{$message}}
-          @enderror
-        </span>
-      </div>
-    
-      <div class="form-group">
-        <label for="">Confirm Password</label>
-        <input name="password_confirmation" type="password" class="form-control">
-        <span class="text-danger">
-          @error('password_confirmation')
-            {{$message}}
-          @enderror
-        </span>
-      </div>
 
       <button class="btn btn-primary">Submit</button>
     
