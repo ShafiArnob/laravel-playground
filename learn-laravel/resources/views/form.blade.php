@@ -12,9 +12,10 @@
       <h1 class="text-center">Registration</h1>
       @php
         $demo = 1;
+        print_r($errors->all());
       @endphp
       <x-input type="text" name="name" label="Name" :demo="$demo"/>
-      <x-input type="email" name="name" label="Email"/>
+      <x-input type="email" name="email" label="Email"/>
       <x-input type="password" name="password" label="Password"/>
       <x-input type="password" name="password_confirmation" label="Confirm Password"/>
 
