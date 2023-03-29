@@ -4,5 +4,5 @@
   @stack('title')
 </head>
 <body>
-  <a href="/">Home</a>
-  <a href="about">About</a>
+  <a href="{{url('/')}}">Home</a>
+  <a href="{{route('about')}}">About</a>

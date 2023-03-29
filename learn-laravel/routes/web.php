@@ -17,7 +17,7 @@ Route::get('/customer', function(){
 
 //* Basic Controller
 Route::get('/', [DemoController::class, 'index']);
-Route::get('/about', 'App\Http\Controllers\DemoController@about');
+Route::get('/about', 'App\Http\Controllers\DemoController@about')->name('about');
 
 //Form
 Route::get('/register', [RegistrationController::class, 'index']);
