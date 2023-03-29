@@ -22,8 +22,8 @@ class RegistrationController extends Controller
         );
         // if the name in the form is different in password we can use in the confirm_pass same:<confirm password input>
         
-        echo "<pre>";
-        print_r($request->all());
+        // echo "<pre>";
+        // print_r($request->all());
 
         $customer = new Customer;
         $customer->name = $request['name'];
@@ -43,5 +43,13 @@ class RegistrationController extends Controller
         $customers = Customer::all();
         $data = compact('customers');
         return view('customer-view')->with($data);
+    }
+
+    public function delete($id){
+        $customer = Customer::find($id);
+        if(!is_null($customer)){
+            $customer->delete();
+        }
+        return redirect('/register/view');
     }
 }

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-
   <title>Customer Data Show</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
   <div class="container">
@@ -17,6 +16,7 @@
           <th>State</th>
           <th>Country</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -29,11 +29,14 @@
           <td>{{$customer->state}}</td>
           <td>{{$customer->country}}</td>
           <td>
-            @if($customer->staus == "1")
-            Active
+            @if($customer->status == "1")
+            <p class="btn btn-success">Active</p>
             @else
-            Inactive
+            <p class="btn btn-danger">Inactive</p>
             @endif
+          </td>
+          <td>
+            <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}"><button class="btn btn-danger">Delete</button></a>
           </td>
         </tr>
         @endforeach

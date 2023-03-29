@@ -23,7 +23,7 @@ Route::get('/about', 'App\Http\Controllers\DemoController@about')->name('about')
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::get('/register/view', [RegistrationController::class, 'view']);
-
+Route::get('/register/delete/{id}', [RegistrationController::class, 'delete'])->name('customer.delete');
 
 //* Single Action Controller
 Route::get('/demo', SingleActionController::class);
