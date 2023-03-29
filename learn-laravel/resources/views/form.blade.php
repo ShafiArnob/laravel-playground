@@ -25,13 +25,13 @@
       
       <div>
         <input type="radio" id="M" name="gender" value="M">
-        <label for="html">M</label><br>
+        <label for="M">M</label><br>
 
         <input type="radio" id="F" name="gender" value="F">
-        <label for="css">F</label><br>
+        <label for="F">F</label><br>
 
-        <input type="radio" id="M" name="gender" value="M">
-        <label for="javascript">M</label>
+        <input type="radio" id="O" name="gender" value="M">
+        <label for="O">O</label>
       </div>
 
       <div>

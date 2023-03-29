@@ -22,6 +22,8 @@ Route::get('/about', 'App\Http\Controllers\DemoController@about');
 //Form
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
+Route::get('/register/view', [RegistrationController::class, 'view']);
+
 
 //* Single Action Controller
 Route::get('/demo', SingleActionController::class);
