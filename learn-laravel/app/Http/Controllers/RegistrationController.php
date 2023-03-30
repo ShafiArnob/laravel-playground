@@ -10,7 +10,8 @@ class RegistrationController extends Controller
     public function index(){
         $url = url('/register');
         $title = "Customer Registration";
-        $data = compact('url', 'title');
+        $customer = new Customer();
+        $data = compact('url', 'title', 'customer');
         return view('form')->with($data);
     }
 
@@ -25,9 +26,7 @@ class RegistrationController extends Controller
         );
         // if the name in the form is different in password we can use in the confirm_pass same:<confirm password input>
         
-        // echo "<pre>";
-        // print_r($request->all());
-
+        p($request ->all());
         $customer = new Customer;
         $customer->name = $request['name'];
         $customer->email = $request['email'];
@@ -39,7 +38,7 @@ class RegistrationController extends Controller
         $customer->password = md5($request['password']);
         $customer->save();
 
-        return redirect('/register/view');
+        // return redirect('/register/view');
     }
 
     public function view(){

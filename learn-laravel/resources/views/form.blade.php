@@ -10,10 +10,10 @@
     <form action="{{$url}}" method="POST">
       @csrf
       <h1 class="text-center">{{$title}}</h1>
-      <!-- @php
+      @php
         $demo = 1;
         print_r($errors->all());
-      @endphp -->
+      @endphp
       <x-input type="text" name="name" label="Name" value="{{$customer->name}}"/>
       <x-input type="email" name="email" label="Email"  value="{{$customer->email}}"/>
 
