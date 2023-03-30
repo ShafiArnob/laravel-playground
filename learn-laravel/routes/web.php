@@ -6,6 +6,26 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Customer;
+use Illuminate\Http\Request;
+
+//* Handle Session
+Route::get('get-all-session', function(){
+  $session = session()->all();
+  p($session);
+});
+
+Route::get('set-session', function(Request $request){
+  $request->session()->put('uname', 'Arnob');
+  $request->session()->put('uid', '123');
+  // $request->session()->flash('status', 'Success');
+  return redirect('get-all-session');
+});
+
+Route::get('destroy-session', function(){
+  session()->forget(['uname', 'uid']);
+  return redirect('get-all-session');
+
+});
 
 //* Model
 Route::get('/customer', function(){
