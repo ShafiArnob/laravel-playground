@@ -25,7 +25,7 @@
           <td>{{$customer->name}}</td>
           <td>{{$customer->email}}</td>
           <td>{{$customer->gender}}</td>
-          <td>{{$customer->dob}}</td>
+          <td>{{get_formatted_date($customer->dob, "d-M-Y")}}</td>
           <td>{{$customer->state}}</td>
           <td>{{$customer->country}}</td>
           <td>

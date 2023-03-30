@@ -7,3 +7,10 @@ if(!function_exists('p')){
     echo '</pre>';
   }
 }
+
+if(!function_exists('get_formatted_date')){
+  function get_formatted_date($date, $format){
+    $formattedDate = date($format, strtotime($date));
+    return $formattedDate;
+  }
+}
