@@ -8,7 +8,10 @@ use App\Models\Customer;
 class RegistrationController extends Controller
 {
     public function index(){
-        return view('form');
+        $url = url('/register');
+        $title = "Customer Registration";
+        $data = compact('url', 'title');
+        return view('form')->with($data);
     }
 
     public function register(Request $request){
@@ -50,6 +53,35 @@ class RegistrationController extends Controller
         if(!is_null($customer)){
             $customer->delete();
         }
+        return redirect('/register/view');
+    }
+
+    public function edit($id){
+        $customer = Customer::find($id);
+        if(is_null($customer)){
+            return redirect('/register/view'); 
+        }
+        else{
+            $title = "Update Customer";
+            $url = url('/register/update') . '/' . $id;
+            $data = compact('customer', 'url', 'title');
+            return view('form')->with($data);
+        }
+        
+    }
+
+    public function update($id, Request $request){
+        
+        $customer = Customer::find($id);
+        $customer->name = $request['name'];
+        $customer->email = $request['email'];
+        $customer->gender = $request['gender'];
+        $customer->address = $request['address'];
+        $customer->state = $request['state'];
+        $customer->country = $request['country'];
+        $customer->dob = $request['dob'];
+        $customer->save();
+
         return redirect('/register/view');
     }
 }

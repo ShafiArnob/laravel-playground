@@ -24,6 +24,10 @@ Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::get('/register/view', [RegistrationController::class, 'view']);
 Route::get('/register/delete/{id}', [RegistrationController::class, 'delete'])->name('customer.delete');
+Route::get('/register/edit/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
+Route::post('/register/update/{id}', [RegistrationController::class, 'update'])->name('customer.update');
+
+
 
 //* Single Action Controller
 Route::get('/demo', SingleActionController::class);
