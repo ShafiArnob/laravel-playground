@@ -14,7 +14,7 @@ class RegistrationController extends Controller
         $data = compact('url', 'title', 'customer');
         return view('form')->with($data);
     }
-
+    
     public function register(Request $request){
         $request->validate(
             [
@@ -47,13 +47,32 @@ class RegistrationController extends Controller
         $data = compact('customers');
         return view('customer-view')->with($data);
     }
-
+    // trash view
+    public function trash(){
+        $customers = Customer::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
+    }
     public function delete($id){
         $customer = Customer::find($id);
         if(!is_null($customer)){
             $customer->delete();
         }
         return redirect('/register/view');
+    }
+    public function restore($id){
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->restore();
+        }
+        return redirect('/register/view');
+    }
+    public function forceDelete($id){
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->forceDelete();
+        }
+        return redirect('/register/trash');
     }
 
     public function edit($id){

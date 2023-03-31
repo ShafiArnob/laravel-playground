@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Customer Data Show</title>
+  <title>Customer Trash</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
   <div class="container">
-    <h1>Customer Data Show</h1>
-    <a href="{{url("/register/trash")}}">
-      <button>Go to trash</button>
+    <h1>Customer Trash</h1>
+    <a href="{{url("/register/view")}}">
+      <button>Go to View</button>
     </a>
     <table class="table">
       <thead>
@@ -40,8 +40,8 @@
             @endif
           </td>
           <td>
-            <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}"><button class="btn btn-danger">Trash</button></a>
-            <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}"><button class="btn btn-success">Edit</button></a>
+            <a href="{{route('customer.force-delete', ['id' => $customer->customer_id])}}"><button class="btn btn-danger">Force Delete</button></a>
+            <a href="{{route('customer.restore', ['id' => $customer->customer_id])}}"><button class="btn btn-success">Restore</button></a>
           </td>
         </tr>
         @endforeach
