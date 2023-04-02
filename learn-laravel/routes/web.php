@@ -50,7 +50,11 @@ Route::get('/register/restore/{id}', [RegistrationController::class, 'restore'])
 Route::get('/register/edit/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
 Route::post('/register/update/{id}', [RegistrationController::class, 'update'])->name('customer.update');
 
+Route::get('/upload', function(){
+  return view('upload');
+});
 
+Route::post('/upload', [RegistrationController::class, "upload"]);
 
 //* Single Action Controller
 Route::get('/demo', SingleActionController::class);

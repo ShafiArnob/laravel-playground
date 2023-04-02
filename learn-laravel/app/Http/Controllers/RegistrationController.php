@@ -103,4 +103,9 @@ class RegistrationController extends Controller
 
         return redirect('/register/view');
     }
+
+    public function upload(Request $request){
+        $fileName = time(). "-ws." . $request->file('image')->getClientOriginalExtension();
+        echo $request->file('image')->storeAs('uploads', $fileName);
+    }
 }
