@@ -7,9 +7,7 @@
 <body>
   <div class="container">
     <h1>Customer Data Show</h1>
-    <a href="{{url("/register/trash")}}">
-      <button>Go to trash</button>
-    </a>
+
     <table class="table">
       <thead>
         <tr>

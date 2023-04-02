@@ -7,14 +7,20 @@
 </head>
 <body>
   <div class="container">
-    <form action="{{$url}}" method="POST">
-      @csrf
+    <!-- <form action="{{$url}}" method="POST"> -->
+    {!!Form::open([
+      "url" => $url,
+      "method" => "post",
+      "id" => "contact",
+      "role" => "form",
+      "class" => "",
+      "enctype" => "multipart/form-data"
+    ])!!}
+      <!-- @csrf -->
       <h1 class="text-center">{{$title}}</h1>
-      @php
-        $demo = 1;
-        print_r($errors->all());
-      @endphp
-      <x-input type="text" name="name" label="Name" value="{{$customer->name}}"/>
+      <!-- <x-input type="text" name="name" label="Name" value="{{$customer->name}}"/> -->
+      {!!Form::text('name', '', [
+        "id"=>"name", "palceholder"=>"Name"])!!}
       <x-input type="email" name="email" label="Email"  value="{{$customer->email}}"/>
 
       <x-input type="password" name="password" label="Password" />
@@ -42,7 +48,8 @@
 
       <button class="btn btn-primary">Submit</button>
     
-    </form>
+      {!!Form::close()!!}
+    <!-- </form> -->
   </div>
   
 </body>
