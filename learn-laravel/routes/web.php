@@ -40,15 +40,17 @@ Route::get('/', [DemoController::class, 'index']);
 Route::get('/about', 'App\Http\Controllers\DemoController@about')->name('about');
 
 //Form
-Route::get('/register', [RegistrationController::class, 'index']);
-Route::post('/register', [RegistrationController::class, 'register']);
-Route::get('/register/view', [RegistrationController::class, 'view'])->name('customer.view');
-Route::get('/register/trash', [RegistrationController::class, 'trash'])->name('customer.trash');
-Route::get('/register/delete/{id}', [RegistrationController::class, 'delete'])->name('customer.delete');
-Route::get('/register/force-delete/{id}', [RegistrationController::class, 'forceDelete'])->name('customer.force-delete');
-Route::get('/register/restore/{id}', [RegistrationController::class, 'restore'])->name('customer.restore');
-Route::get('/register/edit/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
-Route::post('/register/update/{id}', [RegistrationController::class, 'update'])->name('customer.update');
+Route::group(["prefix"=>"/register"], function(){
+  Route::get('/', [RegistrationController::class, 'index']);
+  Route::post('/', [RegistrationController::class, 'register']);
+  Route::get('view', [RegistrationController::class, 'view'])->name('customer.view');
+  Route::get('trash', [RegistrationController::class, 'trash'])->name('customer.trash');
+  Route::get('delete/{id}', [RegistrationController::class, 'delete'])->name('customer.delete');
+  Route::get('force-delete/{id}', [RegistrationController::class, 'forceDelete'])->name('customer.force-delete');
+  Route::get('restore/{id}', [RegistrationController::class, 'restore'])->name('customer.restore');
+  Route::get('edit/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
+  Route::post('update/{id}', [RegistrationController::class, 'update'])->name('customer.update');
+});
 
 Route::get('/upload', function(){
   return view('upload');
