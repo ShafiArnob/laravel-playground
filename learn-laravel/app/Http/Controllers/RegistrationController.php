@@ -42,9 +42,14 @@ class RegistrationController extends Controller
         return redirect('/register/view');
     }
 
-    public function view(){
-        $customers = Customer::all();
-        $data = compact('customers');
+    public function view(Request $request){
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $customers = Customer::where('name', 'LIKE', "$search%")->orWhere('email', 'LIKE', "$search%")->get();
+        }else{
+            $customers = Customer::all();
+        }
+        $data = compact('customers', 'search');
         return view('customer-view')->with($data);
     }
     // trash view

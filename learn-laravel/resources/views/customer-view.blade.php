@@ -7,7 +7,12 @@
 <body>
   <div class="container">
     <h1>Customer Data Show</h1>
-
+    <div>
+      <form action="">
+        <input type="search" name="search" placeholder="Search" value="{{$search}}">
+        <button class="btn btn-primary">Search</button>
+      </form>
+    </div>
     <table class="table">
       <thead>
         <tr>
