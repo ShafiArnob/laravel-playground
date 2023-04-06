@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\RegistrationController;
@@ -51,6 +52,9 @@ Route::group(["prefix"=>"/register"], function(){
   Route::get('edit/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
   Route::post('update/{id}', [RegistrationController::class, 'update'])->name('customer.update');
 });
+
+// Realationships
+Route::get('/data', [IndexController::class, 'index']);
 
 Route::get('/upload', function(){
   return view('upload');
