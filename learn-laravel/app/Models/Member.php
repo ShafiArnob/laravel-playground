@@ -13,4 +13,8 @@ class Member extends Model
     function getGroup(){
         return $this->hasOne('App\Models\Group', 'group_id');
     }
+
+    function group(){
+        return $this->hasMany('App\Models\Group', 'group_id', 'group_id');
+    }
 }
