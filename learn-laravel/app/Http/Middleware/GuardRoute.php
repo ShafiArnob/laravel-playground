@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WebGuard
+class GuardRoute
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,10 @@ class WebGuard
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {   
-        
-        if($request->age < 18){
-            echo "You are not allowed to access Page";
-            die;
-        }
-        return $next($request);
+    {
+        if(session()->has('user_id'))
+            return $next($request);
+        else
+            return redirect('no-access');
     }
 }

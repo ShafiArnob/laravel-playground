@@ -54,12 +54,27 @@ Route::group(["prefix"=>"/register"], function(){
 });
 
 // Realationships
+//* Protected
 //one to one
-Route::get('/data', [IndexController::class, 'index']);
+Route::get('/data', [IndexController::class, 'index'])->middleware('guard');
+//one to many
+Route::get('/group', [IndexController::class, 'group'])->middleware('guard');
+//*--------------
+Route::get('/login',function(){
+  session()->put('user_id', 1);
+  return redirect('/');
+});
+Route::get('/logout',function(){
+  session()->forget('user_id');
+  return redirect('/');
+});
+Route::get('/no-access', function(){
+  echo "Not Allowed to Access";
+  die;
+});
+
 //many to one
 Route::get('/onemany', [IndexController::class, 'oneMany']);
-//one to many
-Route::get('/group', [IndexController::class, 'group']);
 
 Route::get('/upload', function(){
   return view('upload');
